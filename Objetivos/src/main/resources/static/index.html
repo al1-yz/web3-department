@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Objetivos</title>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5.7.50" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+</head>
+<body class="bg-base-200 min-h-screen">
+
+	<!-- Menu -->
+	<div class="navbar bg-base-100 shadow-md px-4">
+		<div class="navbar-start">
+			<span class="text-xl font-bold px-2">Objetivos</span>
+		</div>
+		<div class="navbar-end">
+			<div role="tablist" class="tabs tabs-box">
+				<button role="tab" class="tab tab-active" data-aba="objetivos">Objetivos</button>
+				<button role="tab" class="tab" data-aba="departamentos">Departamentos</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="max-w-5xl mx-auto p-4">
+
+		<!-- Aba Objetivos -->
+		<section id="aba-objetivos">
+			<div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+				<div>
+					<h2 class="text-2xl font-bold">Objetivos</h2>
+					<p class="text-sm opacity-70">Objetivo ◆ Meta ◆ Métrica ◆ Indicador. Apagar um nível apaga tudo abaixo dele.</p>
+				</div>
+				<button class="btn btn-primary" id="btn-novo-objetivo">+ Novo objetivo</button>
+			</div>
+			<div id="lista-objetivos" class="flex flex-col gap-4"></div>
+		</section>
+
+		<!-- Aba Departamentos -->
+		<section id="aba-departamentos" class="hidden">
+			<div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+				<div>
+					<h2 class="text-2xl font-bold">Departamentos</h2>
+					<p class="text-sm opacity-70">Associação com Meta: um departamento só pode ser removido se não tiver metas.</p>
+				</div>
+				<button class="btn btn-primary" id="btn-novo-departamento">+ Novo departamento</button>
+			</div>
+			<div class="overflow-x-auto bg-base-100 rounded-box shadow">
+				<table class="table">
+					<thead>
+						<tr><th>Código</th><th>Nome</th><th>Sigla</th><th>Responsável</th><th>Metas</th><th></th></tr>
+					</thead>
+					<tbody id="lista-departamentos"></tbody>
+				</table>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Formulário genérico (criar/editar qualquer entidade) -->
+	<dialog id="modal-form" class="modal">
+		<div class="modal-box">
+			<h3 class="text-lg font-bold mb-4" id="modal-titulo"></h3>
+			<form id="modal-campos" class="flex flex-col gap-3"></form>
+			<div class="modal-action">
+				<button class="btn" type="button" id="modal-cancelar">Cancelar</button>
+				<button class="btn btn-primary" type="submit" form="modal-campos">Salvar</button>
+			</div>
+		</div>
+		<form method="dialog" class="modal-backdrop"><button>fechar</button></form>
+	</dialog>
+
+	<!-- Modal com as metas de um departamento -->
+	<dialog id="modal-metas" class="modal">
+		<div class="modal-box">
+			<h3 class="text-lg font-bold mb-4" id="modal-metas-titulo"></h3>
+			<ul id="modal-metas-lista" class="list bg-base-200 rounded-box"></ul>
+			<div class="modal-action">
+				<form method="dialog"><button class="btn">Fechar</button></form>
+			</div>
+		</div>
+		<form method="dialog" class="modal-backdrop"><button>fechar</button></form>
+	</dialog>
+
+	<!-- Mensagens -->
+	<div class="toast toast-end z-50" id="toasts"></div>
+
+	<script src="js/app.js"></script>
+</body>
+</html>
